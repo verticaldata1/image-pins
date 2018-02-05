@@ -1,0 +1,9 @@
+$(document).ready(function() {
+  var $container = $('#pin-container');
+  $container.imagesLoaded(function(){
+    $container.masonry({
+      itemSelector : '.grid-item',
+      columnWidth: 250
+    });
+  });  
+});

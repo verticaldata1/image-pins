@@ -1,0 +1,12 @@
+<% include _header %>
+
+<div class="jumbotron text-center" style="max-width: 80%; margin: auto">
+  <h2><%=pin.title%></h2>
+  <img alt="image" class="pin-image" src="<%=pin.url%>">
+  <a href="/profile/<%=pin.owner%>"><p>Pinned by <%=pin.owner_name%></p></a>
+  <p><%=pin.desc%></p>
+</div>
+
+
+</body>
+</html>

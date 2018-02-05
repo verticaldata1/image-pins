@@ -1,0 +1,24 @@
+<% include _header %>
+
+<div class="jumbotron" style="max-width: 50%; margin: auto">
+  <h2>New pin</h2>
+  <form action="/addPin" method="post">
+    <div class="form-group">
+      <label for="pin-url">Link to image:</label>
+      <input name="url" type="text" class="form-control" id="pin-url" required autofocus>
+    </div>
+    <div class="form-group">
+      <label for="pin-title">Title</label>
+      <input name="title" type="text" class="form-control" id="pin-title" required>
+    </div>
+    <div class="form-group">
+      <label for="pin-desc">Description</label>
+      <input name="desc" type="text" class="form-control" id="pin-desc" placeholder="Optional">
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary btn-block">
+  </form>
+  
+</div>
+
+</body>
+</html>
