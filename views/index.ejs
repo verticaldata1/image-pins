@@ -1,0 +1,31 @@
+<% include _header %>
+
+<div class="jumbotron" style="max-width: 80%; margin: auto">
+  <div class="text-center">
+    <h1>Welcome to Image Pins!</h1>
+    <h3>Browse and save image links<br><br></h3>
+
+    <div id="pin-container" style="max-width: 100%; margin: auto">
+      <% allPins.forEach(function(pin, ii) { %>
+        <div class="grid-item">
+          <a href="/viewPin/<%=pin._id%>"><img onerror="imgError(this);" class="grid-image" src="<%=pin.url%>"></a>    
+          <a href="/profile/<%=pin.owner%>"><p style="overflow: hidden; margin: 0px;"><%=pin.owner_name%></p></a>
+          <button id="addFav_<%=pin._id%>" type="button" class = "btn btn-primary btn-sm" style="margin-bottom:5px"><%=pin.favs.length%> <i class="fa fa-heart"></i></button>    
+        </div>
+      <% }) %>
+    </div>
+  </div>  
+  
+</div>
+
+<script>
+<% include _fav_button %>
+<% include _image_error %>
+<% include _start_masonry %>
+
+
+</script>
+
+
+</body>
+</html>

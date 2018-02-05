@@ -1,0 +1,18 @@
+<% allPins.forEach(function(pin) { %>
+  $("#addFav_<%=pin._id%>").click(function() {
+    if(<%=currentUser!=null%>) {
+      $.post("/addFav", {pin_id: "<%=pin._id%>"}, function(data) {
+        if(data == "already faved") {
+          window.alert("Already favorited!");
+        }
+        else {
+          var fav = document.getElementById('addFav_<%=pin._id%>');
+          fav.innerHTML = data + " <i class='fa fa-heart'></i>";
+        }
+      }); 
+    }
+    else {
+      window.alert("Please log in first!");
+    }
+  });
+<% }) %>

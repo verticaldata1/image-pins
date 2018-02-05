@@ -1,0 +1,42 @@
+<% include _header %>
+
+<div class="jumbotron text-center" style="max-width: 80%; margin: auto">
+  <h4>Your favorites:<br><br></h4>
+  
+  <div id="pin-container" style="max-width: 100%; margin: auto">
+    <% allPins.forEach(function(pin, ii) { %>
+      <div class="grid-item">
+        <a href="/viewPin/<%=pin._id%>"><img onerror="imgError(this);" class="grid-image" src="<%=pin.url%>"></a>  
+        <p style="overflow: hidden; margin: 0px;"><%=pin.title%></p>
+        <a href="/profile/<%=pin.owner%>"><p style="overflow: hidden; margin: 0px;"><%=pin.owner_name%></p></a>
+        <button id="removeFav_<%=pin._id%>" type="button" class = "btn btn-primary btn-sm" style="margin-bottom:5px">Unfavorite</button>    
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<script>
+<% include _image_error %>
+  
+  
+<% allPins.forEach(function(pin) { %>
+  $("#removeFav_<%=pin._id%>").click(function() {
+      $.post("/removeFav", {pin_id: "<%=pin._id%>"}, function(data) {
+        if(data == "error") {
+          window.alert("Unfavorite error");
+          window.location.reload();      
+        }
+        else {
+          window.location.reload();      
+        }
+      }); 
+  });
+<% }) %>
+  
+<% include _start_masonry %>
+  
+
+</script>
+
+</body>
+</html>
